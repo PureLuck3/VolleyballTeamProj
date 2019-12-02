@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS users
     password VARCHAR(250) NOT NULL
 );
 
-CREATE TABLE media 
+CREATE TABLE if not exists media 
 (
 	id INTEGER(10) AUTO_INCREMENT PRIMARY KEY,
     type VARCHAR(10) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE media
 create table if not exists album
 (
     id INTEGER(10) AUTO_INCREMENT PRIMARY KEY,
-    title varcher(50) NOT NULL,
+    title VARCHAR(50) NOT NULL,
     userID INTEGER(10) NOT NULL,
     description varchar(250),
     date DATE NOT NULL
