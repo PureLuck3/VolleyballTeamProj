@@ -2,7 +2,7 @@
   $title= "Billboard";
   require "header.php";
 
-  if(isset($_SESSION["userID"])){
+  if(validate_session()){
     $name = $_SESSION["userName"];
   }
   else{

@@ -8,7 +8,7 @@
 
   <?php 
 
-  if(isset($_SESSION["userID"]) && $authorID == $_SESSION["userID"]){
+  if(validate_session() && $authorID == $_SESSION["userID"]){
 
     echo "<div class='card-footer text-left'>
     <button class='btn btn-secondary mb-2' data-toggle='collapse' data-target='#col$id'>Edit post</button>

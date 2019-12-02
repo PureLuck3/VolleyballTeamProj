@@ -5,7 +5,7 @@
 
     if(validate_session())
     {
-        header("Location: error.php?ErrorMSG=Already%20Logged!");
+        header("Location: ./error.php?ErrorMSG=Already%20Logged!");
         die();
     }
 ?>

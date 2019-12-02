@@ -23,7 +23,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <?php
-                        if (isset($_SESSION["userID"]))
+                        if (validate_session())
                         {
                             echo "<a class='nav-link' href='../DOMAINLOGIC/logout.dom.php'>LOGOUT</a>";
                         }
@@ -35,7 +35,7 @@
                 </li>
                 <li class="nav-item">
                     <?php
-                        if (isset($_SESSION["userID"]))
+                        if (validate_session())
                         {
                             echo "<a class='nav-link' href='myProfileview.php'>MY PROFILE</a>";
                         }
