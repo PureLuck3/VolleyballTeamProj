@@ -5,7 +5,7 @@
 
     if(!validate_session())
     {
-        header("Location: error.php?ErrorMSG=Not%20Logged%20in!");
+        header("Location: ./error.php?ErrorMSG=Not%20Logged%20in!");
         die();
     }
 ?>
