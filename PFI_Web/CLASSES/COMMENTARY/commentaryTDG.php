@@ -11,7 +11,7 @@ class CommentaryTDG extends DBAO{
 
     private function __construct(){
         Parent::__construct();
-        $this->tableName = "commentary";
+        $this->tableName = "comments";
     }
     public static function get_instance(){
         if (is_null(self::$instance)){
@@ -57,12 +57,79 @@ class CommentaryTDG extends DBAO{
         $conn = null;
         return $resp;
     }
+
+    public function add_commentary($type, $content, $refID){
+        try{
+            date_default_timezone_set('EST');
+            $conn = $this->connect();
+            $tablename = $this->tablename;
+            $query = "INSERT INTO $tablename(type, date, content, refID) VALUES(:type, " . date("F j, Y, g:i a") . ", :content, :refID)";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':type', $type);
+            $stmt->bindParam(':content', $content);
+            $stmt->bindParam(':refID', $refID);
+            $stmt->execute();
+            $resp = true;
+        }
+        catch(PDOException $e){
+            $resp = false;
+        }
+        $conn = null;
+        return $resp;
+    }
+
+    public function modify_commentary($id, $content){
+        try{
+            $conn = $this->connect();
+            $tablename = $this->tablename;
+            $query = "UPDATE $tablename SET content=:content WHERE id=:id";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':content', $content);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            $resp = true;
+        }
+        catch(PDOException $e){
+            $resp = false;
+        }
+        $conn = null;
+        return $resp;
+    }
+
+    public function delete_commentary($id){
+        try{
+            $conn = $this->connect();
+            $tablename = $this->tablename;
+            $query = "DELETE FROM $tablename WHERE id=:id";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            $resp = true;
+        }
+        catch(PDOException $e){
+            $resp = false;
+        }
+        $conn = null;
+        return $resp;
+    }
+
+    public function get_commentary($type, $refID){
+        try{
+            $conn = $this->connect();
+            $tablename = $this->tablename;
+            $query = "SELECT * FROM $tablename WHERE type=:type AND refID=:refID";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':type', $type);
+            $stmt->bindParam(':refID', $refID);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll();
+        }
+        catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+        }
+        $conn = null;
+        return $result;
+    }
 }
 ?>
-
-
-<!-- Get time in correct time zone -->
-<!-- 
-    date_default_timezone_set('EST');
-    echo date("F j, Y, g:i a");
--->
