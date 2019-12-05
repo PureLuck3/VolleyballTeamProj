@@ -7,7 +7,7 @@ class Commentary{
     private $type;
     private $date;
     private $content;
-    private $idRef
+    private $refID
 
     public function __construct(){}
 
@@ -24,8 +24,8 @@ class Commentary{
     public function get_content(){
         return $this->content;
     }
-    public function get_idRef(){
-        return $this->idRef;
+    public function get_refID(){
+        return $this->refID;
     }
 
     // Setters
@@ -38,19 +38,42 @@ class Commentary{
     public function set_content($content){
         $this->content = $content;
     }
-    public function set_idRef($idRef){
-        $this->idRef = $idRef;
+    public function set_refID($refID){
+        $this->refID = $refID;
     }
 
     // Methodes
-    public function comment($type, $content, $idRef){
+    public function add_comment($type, $content, $refID){
         if (is_null($content))
             return false;
         
         $TDG = CommentaryTDG::get_instance();
-        $TDG->add_commentary($type, $content, $idRef);
+        $res = $TDG->add_commentary($type, $content, $refID);
         $TDG = null;
-        return true;
+        return $res;
     }
+
+    public function modify_comment($id, $content){
+        $TDG = CommentaryTDG::get_instance();
+        $res = $TDG->modify_commentary($id, $content);
+        $TDG = null;
+        return $res
+    }
+
+    public function delete_comment($id){
+        $TDG = CommentaryTDG::get_instance();
+        $res = $TDG->delete_commentary($id);
+        $TDG = null;
+        return $res;
+    }
+
+    public function get_comments($type, $refID){
+        $TDG = CommentaryTDG::get_instance();
+        $res = $TDG->get_commentary($type, $refID);
+        $TDG = null;
+        return $res;
+    }
+
+    // Appel de méthodes like / dislike de likeTDG;
 }
 ?>
