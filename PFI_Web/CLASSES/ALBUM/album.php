@@ -29,6 +29,50 @@ class Album{
         include __DIR__ . "";
     }
 
+    //getter
+    public function get_id(){
+        return $this->id;
+    }
+
+    public function get_title(){
+        return $this->title;
+    }
+
+    public function get_userID(){
+        return $this->userID;
+    }
+
+    public function get_description(){
+        return $this->description;
+    }
+
+    public function get_date(){
+        return $this->date;
+    }
+
+    //setter
+
+    public function set_id($id){
+        return $this->id = $id;
+    }
+    
+    public function set_title($title){
+        return $this->title = $title;
+    }
+    
+    public function set_userID($userID){
+        return $this->userID = $userID;
+    }
+    
+    public function set_description($description){
+        return $this->description = $description;
+    }
+    
+    public function set_date($date){
+        return $this->date = $date;
+    }
+
+
     public static function create_album($title, $description, $date){
         $TDG = albumTDG::get_instance();
         $res = $TDG->add_media($title, $description, $date);
