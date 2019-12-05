@@ -18,22 +18,61 @@ class albumTDG extends DBAO{
         }
     }
 
-    public function add_album($title, $userID, $description, $date){
-        
+//Création de la table
+    public function createTable(){
         try{
             $conn = $this->connect();
             $tableName = $this->tableName;
-            $query = "INSERT INTO $tableName (title, userID, description, date) VALUES (:title, :userID, :description, :date)";
+            $query = "CREATE table if not exists $tableName(  id INTEGER(10) AUTO_INCREMENT PRIMARY KEY,
+            title VARCHAR(50) NOT NULL,
+            userID INTEGER(10) NOT NULL,
+            description varchar(250),
+            date DATE NOT NULL
+        )";
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $resp = true;
+        }
+        catch(PDOException $e){
+            $resp = false;
+        }
+        $conn = null;
+        return $resp;
+    }
+//Drop la Table
+    public function dropTable(){
+        try{
+            $conn = $this->connect();
+            $tableName = $this->tableName;
+            $query = "DROP TABLE if exists $tableName";
+            $stmt = $conn->prepare($query);
+            $stmt->execute();
+            $resp = true;
+        }
+        catch(PDOException $e){
+            $resp = false;
+        }
+        $conn = null;
+        return $resp;
+    }
+
+//Ajoute un album a la BD
+    public function add_album($title, $userID, $description){
+        
+        try{
+            date_default_timezone_set('EST');
+            $conn = $this->connect();
+            $tableName = $this->tableName;
+            $query = "INSERT INTO $tableName (title, userID, description, date) VALUES (:title, :userID, :description," . date("D, d M Y H:i:s"). ")";
             $stmt = $conn->prepare($query);
             $stmt->bindParam(':title', $title);
             $stmt->bindParam(':userID', $userID);
             $stmt->bindParam(':description', $description);
-            $stmt->bindParam('date', $date);
             $stmt->execute();
             $resp = true;
         }
 
-        catch(PDOException $e)
+        catch(PDOException $e1)
         {
             $resp =  false;
         }
@@ -42,6 +81,7 @@ class albumTDG extends DBAO{
         return $resp;
     }
 
+    //Sort tout les albums
     public function get_all_album(){
 
         try{
@@ -53,9 +93,9 @@ class albumTDG extends DBAO{
             $result = $stmt->fetchAll();
         }
 
-        catch(PDOException $e)
+        catch(PDOException $e2)
         {
-            echo "Error: " . $e->getMessage();
+            echo "Error: " . $e2->getMessage();
             return false;
         }
         //fermeture de connection PDO
@@ -63,6 +103,7 @@ class albumTDG extends DBAO{
         return $result;
     }
 
+    //Sort tout les albums selon un ID
     public function get_album_by_id($id){
 
         try{
@@ -75,15 +116,16 @@ class albumTDG extends DBAO{
             $result = $stmt->fetch();
         }
 
-        catch(PDOException $e)
+        catch(PDOException $e3)
         {
-            echo "Error: " . $e->getMessage();
+            echo "Error: " . $e3->getMessage();
         }
         //fermeture de connection PDO
         $conn = null;
         return $result;
     }
 
+    //Sort un album selon le titre de l'album
     public function get_album_by_title($title){
 
         try{
@@ -96,13 +138,76 @@ class albumTDG extends DBAO{
             $result = $stmt->fetch();
         }
 
-        catch(PDOException $e)
+        catch(PDOException $e4)
         {
-            echo "Error: " . $e->getMessage();
+            echo "Error: " . $e4->getMessage();
         }
         //fermeture de connection PDO
         $conn = null;
         return $result;
+    }
+
+    //Sort un album selon le l'ID d'un usager
+    public function get_album_by_userID($userID){
+        try{
+            $conn = $this->connect();
+            $query = "SELECT * FROM " . $this->tableName . " where userID = :userID";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetch();
+        }
+        catch(PDOException $e5){
+            echo "Error : " . $e5->getMessage()();
+        }
+
+        $conn = null;
+        return $result;
+    }
+
+    //Supprime un album selon l'ID
+    public function delete_albumTDG($id) {
+        try{
+            $conn = $this->connect();
+            $query = "DELETE from " . $this->tableName . " where id = :id";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+        }
+        catch(PDOException $e6){
+            echo "Error : " . $e6->getMessage()();
+        }
+    }
+
+    //mets à jour le titre d'un album selon son ID
+    public function update_album_titleTDG($id, $title){
+        try{
+            $conn = $this->connect();
+            $query = "UPDATE " . $this->tableName . " SET title = :title where id=:id";
+            $stmt = $conn->prepare($query);            
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':title', $title);
+            $stmt->execute();
+        }
+        catch(PDOException $e7){
+            echo "Error : " . $e7->getMessage()();
+        }
+    }
+
+    //mets à jour la description d'un album selon son ID
+    public function update_album_descriptionTDG($id, $description){
+        try{
+            $conn = $this->connect();
+            $query = "UPDATE " . $this->tableName . " SET description = :description where id=:id";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':description', $description);
+            $stmt->execute();
+        }
+        catch(PDOException $e7){
+            echo "Error : " . $e7->getMessage()();
+        }
     }
 }
 ?>
