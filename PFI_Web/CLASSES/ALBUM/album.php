@@ -1,5 +1,5 @@
 <?php
-
+include_once __DIR__ . "/../MEDIA/media.php";
 include_once __DIR__ . "/albumTDG.php";
 
 class Album{
@@ -52,9 +52,9 @@ class Album{
 
     //setter
 
-    public function set_id($id){
-        return $this->id = $id;
-    }
+    // public function set_id($id){
+    //     return $this->id = $id;
+    // }
     
     public function set_title($title){
         return $this->title = $title;
@@ -68,9 +68,9 @@ class Album{
         return $this->description = $description;
     }
     
-    public function set_date($date){
-        return $this->date = $date;
-    }
+    // public function set_date($date){
+    //     return $this->date = $date;
+    // }
 
 
     public static function create_album($title, $description, $date){
@@ -94,6 +94,25 @@ class Album{
             array_push($obj_arr, $temp_m);
         }
         return $obj_arr;
+    }
+
+    public static function delete_album($id){
+        $TDG = albumTDG::get_instance();
+        $media = new Media();
+        $res = $TDG->delete_albumTDG($id);
+        return $res;
+    }
+
+    public static function update_album_title($id, $title){
+        $TDG = albumTDG::get_instance();
+        $res = $TDG->update_album_titleTDG($id, $title);
+        return $res;
+    }
+
+    public static function update_album_description($id, $description){
+        $TDG = albumTDG::get_instance();
+        $res = $TDG->update_album_descriptionTDG($id, $description);
+        return $res;
     }
 
 }
