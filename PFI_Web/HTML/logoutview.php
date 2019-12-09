@@ -1,7 +1,7 @@
 <?php
     $title= "Logout";
-    require "header.php";
     include "../UTILS/sessionhandler.php";
+    require "header.php";
 
     if(validate_session())
     {
