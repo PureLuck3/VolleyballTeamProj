@@ -1,5 +1,6 @@
 <?php
   $title= "Billboard";
+  include "../UTILS/sessionhandler.php";
   require "header.php";
 
   if(validate_session()){

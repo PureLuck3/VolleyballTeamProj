@@ -1,5 +1,6 @@
 <?php
     $title= "Register";
+    include "../UTILS/sessionhandler.php";
     require "header.php";
 ?>
 
@@ -7,7 +8,7 @@
     <div class="row">
         <div class="col-sm-4">
             <h2>REGISTER</h2>
-            <form method = "post" action = "./DOMAINLOGIC/register.dom.php">
+            <form method = "post" action = "../DOMAINLOGIC/register.dom.php">
 
                 <div class="form-group">
                     <label for="email">Email:</label>
@@ -36,7 +37,7 @@
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
-                <button class="btn btn-success" type="submit">Login</button>
+                <button class="btn btn-success" type="submit">Register</button>
             </form>
         </div>
     </div>

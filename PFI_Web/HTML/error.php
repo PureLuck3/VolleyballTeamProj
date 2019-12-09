@@ -1,5 +1,5 @@
 <?php
-    
+    include "../UTILS/sessionhandler.php";
     require "header.php";
 
     function generateErrorMSG(){
