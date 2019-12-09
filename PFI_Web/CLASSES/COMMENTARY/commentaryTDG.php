@@ -96,13 +96,33 @@ class CommentaryTDG extends DBAO{
         return $resp;
     }
 
-    public function delete_commentary($id){
+    public function delete_commentary($id, $type, $refID){
         try{
             $conn = $this->connect();
             $tablename = $this->tablename;
-            $query = "DELETE FROM $tablename WHERE id=:id";
+            $query = "DELETE FROM $tablename WHERE id=:id AND type=:type AND refID=:refID";
             $stmt = $conn->prepare($query);
             $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':type', $type);
+            $stmt->bindParam(':refID', $refID);
+            $stmt->execute();
+            $resp = true;
+        }
+        catch(PDOException $e){
+            $resp = false;
+        }
+        $conn = null;
+        return $resp;
+    }
+
+    public function delete_all_commentary($type, $refID){
+        try{
+            $conn = $this->connect();
+            $tablename = $this->tablename;
+            $query = "DELETE FROM $tablename WHERE type=:type AND refID=:refID";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':type', $type);
+            $stmt->bindParam(':refID', $refID);
             $stmt->execute();
             $resp = true;
         }
