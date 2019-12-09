@@ -159,7 +159,7 @@ class albumTDG extends DBAO{
             $result = $stmt->fetch();
         }
         catch(PDOException $e5){
-            echo "Error : " . $e5->getMessage()();
+            echo "Error : " . $e5->getMessage();
         }
 
         $conn = null;
@@ -176,7 +176,7 @@ class albumTDG extends DBAO{
             $stmt->execute();
         }
         catch(PDOException $e6){
-            echo "Error : " . $e6->getMessage()();
+            echo "Error : " . $e6->getMessage();
         }
     }
 
@@ -191,7 +191,7 @@ class albumTDG extends DBAO{
             $stmt->execute();
         }
         catch(PDOException $e7){
-            echo "Error : " . $e7->getMessage()();
+            echo "Error : " . $e7->getMessage();
         }
     }
 
@@ -206,7 +206,7 @@ class albumTDG extends DBAO{
             $stmt->execute();
         }
         catch(PDOException $e7){
-            echo "Error : " . $e7->getMessage()();
+            echo "Error : " . $e7->getMessage();
         }
     }
 }
