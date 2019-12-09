@@ -5,12 +5,12 @@
     session_start();
 
     if(!validate_session()){
-        header("Location: ../error.php?ErrorMSG=Not%20logged%20in!");
+        header("Location: ../HTML/error.php?ErrorMSG=Not%20logged%20in!");
         die();
     }
 
     if(!isset($_POST["postID"])){
-        header("Location: ../error.php?ErrorMSG=Bad%20Requests!");
+        header("Location: ../HTML/error.php?ErrorMSG=Bad%20Requests!");
         die();
     }
 
@@ -18,12 +18,12 @@
     $post->load_post($_POST["postID"]);
 
     if(!$post->get_authorID() == $_SESSION["userID"]){
-        header("Location: ../error.php?ErrorMSG=Bad%20Requests!");
+        header("Location: ../HTML/error.php?ErrorMSG=Bad%20Requests!");
         die();
     }
 
     $post->set_content($_POST['content']);
     $post->delete();
 
-    header("Location: ../billboard.php");
+    header("Location: ../HTML/billboard.php");
     die();
