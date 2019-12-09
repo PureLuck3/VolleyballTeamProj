@@ -57,12 +57,19 @@ class Commentary{
         $TDG = CommentaryTDG::get_instance();
         $res = $TDG->modify_commentary($id, $content);
         $TDG = null;
-        return $res
+        return $res;
     }
 
-    public function delete_comment($id){
+    public function delete_comment($id, $type, $refID){
         $TDG = CommentaryTDG::get_instance();
-        $res = $TDG->delete_commentary($id);
+        $res = $TDG->delete_commentary($id, $type, $refID);
+        $TDG = null;
+        return $res;
+    }
+
+    public function delete_all_comments($type, $refID){
+        $TDG = CommentaryTDG::get_instance();
+        $res = $TDG->delete_all_commentary($type, $refID);
         $TDG = null;
         return $res;
     }
