@@ -6,7 +6,7 @@
     session_start();
 
     if(validate_session()){
-        header("Location: ../error.php?ErrorMSG=Already%20logged!");
+        header("Location: ../HTML/error.php?ErrorMSG=Already%20logged!");
         die();
     }
 
@@ -20,7 +20,7 @@
     if(!Validator::validate_email($email) || !Validator::validate_password($pw))
     {
         http_response_code(400);
-        header("Location: ../error.php?ErrorMSG=invalid email or password");
+        header("Location: ../HTML/error.php?ErrorMSG=invalid email or password");
         die();
     }
 
@@ -30,10 +30,10 @@
     if(!$aUser->register($email, $username, $pw, $pwv))
     {
         http_response_code(400);
-        header("Location: ../error.php?ErrorMSG=invalid email or password");
+        header("Location: ../HTML/error.php?ErrorMSG=invalid email or password");
         die();
     }
 
-    header("Location: ../login.php");
+    header("Location: ../HTML/loginview.php");
     die();
 ?>

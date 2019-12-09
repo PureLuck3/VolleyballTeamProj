@@ -27,7 +27,7 @@
       die();
     }
 
-    header("Location: ../threadview.php?threadID=$threadID&threadTitle=$threadTitle");
+    header("Location: ../HTML/threadview.php?threadID=$threadID&threadTitle=$threadTitle");
     die();
 
  ?>
