@@ -74,7 +74,7 @@ class Media{
         $descrition = $this->description;
         $date = $this->date;
         $albumID = $this->albumID;
-        include __DIR__ . "/../Templates/mediaTemplate.php";
+        include __DIR__ . "/../../HTML/mediaTemplate.php";
     }
 
     public function create_entry($type, $url, $title, $description, $albumID){
