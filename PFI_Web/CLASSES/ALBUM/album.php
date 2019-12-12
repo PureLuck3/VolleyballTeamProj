@@ -10,14 +10,14 @@ class Album{
     private $description;
     private $date;
 
-    public function __construct($id, $title, $userID, $description, $date)
-    {
-        // $this->id = $id;
-        // $this->title = $title;
-        // $this->userID = $userID;
-        // $this->description = $description;
-        // $this->date = $date;
-    }
+    // public function __construct($id, $title, $userID, $description, $date)
+    // {
+    //     // $this->id = $id;
+    //     // $this->title = $title;
+    //     // $this->userID = $userID;
+    //     // $this->description = $description;
+    //     // $this->date = $date;
+    // }
 
     public function display(){
         $id = $this->id;
@@ -26,7 +26,7 @@ class Album{
         $description = $this->description;
         $date = $this->date;
 
-        include __DIR__ . "";
+        include __DIR__ . "/albumTemplate.php";
     }
 
     //getter
@@ -87,6 +87,14 @@ class Album{
         return $obj_list;
     }
 
+    public static function get_all_album_by_userID($userID){
+        $TDG = albumTDG::get_instance();
+        $res= $TDG->get_all_album_by_userID($userID);
+
+        $obj_list = self::arr_to_obj($res);
+        return $obj_list;
+    }
+
     public static function arr_to_obj($arr){
         $obj_arr = array();
         foreach($arr as $k){
@@ -115,6 +123,9 @@ class Album{
         return $res;
     }
 
+    public static function load_album(){
+        
+    }
 }
 
 ?>
