@@ -48,6 +48,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="billboardview.php">BILLBOARD</a>
                 </li>
+                <li class="nav-item">
+                    <?php 
+                        if(validate_session())
+                        {
+                            echo "<a class='nav-link' href='albumview.php'>MY ABLUMS</a>";
+                        }
+                        else
+                        {
+                            echo "";
+                        }
+                    ?>
+                </li>
             </ul>
 
             <div class="collapse navbar-collapse">
