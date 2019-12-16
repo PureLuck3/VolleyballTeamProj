@@ -1,7 +1,7 @@
 <?php
     $title= "My Profile";
-    require "header.php";
     include "../UTILS/sessionhandler.php";
+    require "header.php";
 
     if(!validate_session())
     {
@@ -11,9 +11,9 @@
 ?>
 
 <div class="container" style="margin-top:30px">
+<h2>MY PROFILE</h2>
     <div class="row">
         <div class="col-sm-4">
-            <h2>MY PROFILE</h2>
             <form method = "post" action = "../DOMAINLOGIC/updateInfo.dom.php">
                 
                 <div class="form-group">
@@ -49,6 +49,22 @@
                 </div>
 
                 <button class="btn btn-success" type="submit">Update</button>
+            </form>
+        </div>
+        <div class="col-md-4 order-md-2 mb-4">
+
+            <form method = "post" action = "../DOMAINLOGIC/upload.dom.php" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label for="Media">Profile Picture</label>
+                    <?php include "./profilepictureview.php" ?>
+                    <input type="file" class="form-control" name="Media" id="Media" required>
+                    <div class="valid-feedback">Valid.</div>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+
+                <button class="btn btn-success" type="submit">Upload</button>
+
             </form>
         </div>
     </div>
