@@ -14,7 +14,7 @@ class DBAO {
         $this->servername = "localhost";
         $this->username = "root";
         $this->password = "";
-        $this->dbname = "webproj";
+        $this->dbname = "webvolley";
         $this->charset = "utf8mb4";
     }
 
