@@ -1,0 +1,1 @@
+<img src=$url alt="picture not found" class="img-thumbnail">
