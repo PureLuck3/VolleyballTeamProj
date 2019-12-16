@@ -74,6 +74,24 @@ class User{
         return true;
     }
 
+    public function load_user_by_id($id){
+        $TDG = UserTDG::get_instance();
+        $res = $TDG->get_by_id($id);
+
+        if($res){
+            $TDG = null;
+            return false;
+        }
+
+        $this->id = $res['id'];
+        $this->email = $res['email'];
+        $this->username = $res['username'];
+        $this->password = $res['password'];
+
+        $TDG = null;
+        return true;
+    }
+
 
     //Login Validation
     public function Login($email, $pw){
@@ -123,6 +141,9 @@ class User{
         //add user to DB
         $TDG = UserTDG::get_instance();
         $res = $TDG->add_user($email, $username, password_hash($pw, PASSWORD_DEFAULT));
+        $pathname = "../MEDIAS/" . $this->id;
+        mkdir($pathname);
+        copy("../MEDIAS/profilepicture.png", $pathname);
         $TDG = null;
         return true;
     }
