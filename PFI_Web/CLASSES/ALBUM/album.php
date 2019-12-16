@@ -133,10 +133,6 @@ class Album{
         $res = $TDG->update_album_descriptionTDG($id, $description);
         return $res;
     }
-
-    public static function load_album(){
-        
-    }
 }
 
 ?>

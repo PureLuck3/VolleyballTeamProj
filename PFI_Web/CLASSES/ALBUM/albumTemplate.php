@@ -1,3 +1,8 @@
 <div class="Container">
-    <h4><?php echo $title?></h4>
+    <div class="card">
+        <div class="card-header">
+            <h2><?php echo $title ?></h2>
+            <img>
+        </div>
+    </div>
 </div>
