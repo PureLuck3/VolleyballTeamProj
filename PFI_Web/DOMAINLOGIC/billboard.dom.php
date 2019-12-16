@@ -1,26 +1,38 @@
 <?php
-    include "../CLASSES/THREAD/thread.php";
+    include "../CLASSES/ALBUM/album.php";
+    include "../CLASSES/MEDIA/media.php";
 
-    function display_thread_info()
+    function display_billboard()
     {
-        $result = THREAD::create_thread_list();
+        $array = new array();
+        $sortedArray = new array();
+        $mostLikes = 0;
 
-        foreach($result as $r)
+        $albums = ALBUM::get_all_album();
+        $medias = MEDIA::get_medias();
+
+        foreach($albums as $a)
         {
-            $r->display_thread();
-            echo "<br>";
+            $array->array_push($a);
         }
-    }
-
-    function display_post_info($threadId)
-    {
-        $aPost = new Post();
-        $result = $aPost -> fetch_posts_by_threadID($threadId);
-
-        foreach($result as $r)
+        foreach($medias as $m)
         {
-            $r->display_post();
-            echo "<br>";
+            $array->array_push($m);
         }
+
+        while(!Empty($array))
+        {
+            foreach($array as $elem)
+            {
+                if ($elem->get_views() > $mostLikes)
+                {
+                    $mostLikes = $elem->get_views();
+                    $sortedArray->array_push($elem);
+                    unset($array[$elem]);
+                }
+            }
+        }
+
+        // Afficher le top N de sortedArrays!! NE PAS FAIRE BOUTON SHOW MORE
     }
 ?>
