@@ -1,6 +1,7 @@
 <?php
 include_once __DIR__ . "/../MEDIA/media.php";
 include_once __DIR__ . "/albumTDG.php";
+include_once __DIR__ . "/../USER/user.php";
 
 class Album{
 
@@ -9,6 +10,7 @@ class Album{
     private $userID;
     private $description;
     private $date;
+    private $views;
 
     // public function __construct($id, $title, $userID, $description, $date)
     // {
@@ -23,6 +25,8 @@ class Album{
         $id = $this->id;
         $title = $this->title;
         $userID = $this->userID;
+        $user = new user();
+        $user->load_user_by_id($userID);        
         $description = $this->description;
         $date = $this->date;
 
@@ -50,6 +54,10 @@ class Album{
         return $this->date;
     }
 
+    public function get_views(){
+        return $this->views;
+    }
+
     //setter
 
     // public function set_id($id){
@@ -68,6 +76,9 @@ class Album{
         return $this->description = $description;
     }
     
+    public function set_views($views){
+        return $this->views = $views;
+    }
     // public function set_date($date){
     //     return $this->date = $date;
     // }
