@@ -45,7 +45,7 @@ class Media{
     }
 
     public function get_views(){
-        return $this->views
+        return $this->views;
     }
 
     //setters
@@ -74,7 +74,7 @@ class Media{
         $descrition = $this->description;
         $date = $this->date;
         $albumID = $this->albumID;
-        include __DIR__ . "/../../HTML/mediaTemplate.php";
+        include __DIR__ . "/../Templates/mediaTemplate.php";
     }
 
     public function create_entry($type, $url, $title, $description, $albumID){
