@@ -9,13 +9,14 @@ class albumTDG extends DBAO{
 
     private function __construct(){
         Parent::__construct();
-        $this->tableName = "album";
+        $this->tableName = "albums";
     }
 
     public static function get_instance(){
         if(is_null(self::$instance)){
             self::$instance = new albumTDG();
         }
+        return self::$instance;
     }
 
 //Création de la table
