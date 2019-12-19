@@ -81,7 +81,7 @@ class Media{
         $type = $this->type;
         $url = $this->URL;
         $title = $this->title;
-        $descrition = $this->description;
+        $description = $this->description;
         $date = $this->date;
         $albumID = $this->albumID;
         include __DIR__ . "/../../HTML/mediaTemplate.php";
@@ -108,11 +108,10 @@ class Media{
         return $obj_list;
     }
 
-    public static function get_medias_by_albumID($albumID){
+    public static function get_medias_by_albumID(){
         $TDG = MediaTDG::get_instance();
         $res = $TDG-> get_by_albumID($albumID);
-        $obj_list = self::arr_to_obj($res);
-        return $obj_list;
+        return $res;
     }
 
     public static function arr_to_obj($arr){
@@ -126,7 +125,9 @@ class Media{
 
     public function add_view(){
         $TDG = MediaTDG::get_instance();
-        $res = $TDG->update_views($this->get_id(), $this->get_views());
+        $res = $TDG->update_views(get_id(), get_views());
         return $res;
     }
+
+
 }
