@@ -93,7 +93,7 @@ class Media{
         return $res;
     }
 
-    public function remove_media(){
+    public function remove_media($id){
         $TDG = MediaTDG::get_instance();
         $res = $TDG-> delete_media($id);
         return $res;
@@ -108,10 +108,11 @@ class Media{
         return $obj_list;
     }
 
-    public static function get_medias_by_albumID(){
+    public static function get_medias_by_albumID($albumID){
         $TDG = MediaTDG::get_instance();
         $res = $TDG-> get_by_albumID($albumID);
-        return $res;
+        $obj_list = self::arr_to_obj($res);
+        return $obj_list;
     }
 
     public static function arr_to_obj($arr){
@@ -125,7 +126,7 @@ class Media{
 
     public function add_view(){
         $TDG = MediaTDG::get_instance();
-        $res = $TDG->update_views(get_id(), get_views());
+        $res = $TDG->update_views($this->get_id(), $this->get_views());
         return $res;
     }
 
