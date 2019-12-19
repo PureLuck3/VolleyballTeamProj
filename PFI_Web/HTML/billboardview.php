@@ -12,12 +12,16 @@
   }
 ?>
 
-<div class="container mt-30">
-  <h1 class="mb-4" >Welcome <?php echo $name ?> </h1>
-    <?php
-      display_billboard();
-    ?>
-    <div class="col-md-4 mb-4">
-        <?php include "uploadview.php"; ?>
+<div class="container">
+  <h1 class="mb-4">Welcome <?php echo $name ?> </h1>
+    <div class="row">
+      <div class="col-md-8 mb-4">
+        <?php
+          display_billboard();
+        ?>
+      </div>
+      <div class="col-md-4 mb-4">
+          <?php include "uploadview.php"; ?>
+      </div>
     </div>
 </div>
