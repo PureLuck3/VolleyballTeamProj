@@ -1,6 +1,7 @@
 <?php
     $title= "MY ALBUMS";
     include "../UTILS/sessionhandler.php";
+    include_once __DIR__ . "/../DOMAINLOGIC/album.dom.php";
     require "header.php"; 
 
     if(!validate_session())
@@ -15,8 +16,19 @@
 
 <div class="container" style="margin-top:30px">
     <div class="row">
-        <div class="col-sm-4">    
-            <?php include_once __DIR__ . "/../DOMAINLOGIC/album.dom.php";?>
+        <div class="col-sm-4">  
+            <div class="Container" style="width:400px">
+                
+                <h2><?php echo $_SESSION["userName"] ."'s" . " Albums" ?></h2>
+                <div class="card" style="width:400px">
+                    <div class="card-header">
+                        <a href=""><?php  ?></a>
+                    </div>
+                    <div class="card-body">
+                        
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
