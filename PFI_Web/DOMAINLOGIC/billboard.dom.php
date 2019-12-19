@@ -48,6 +48,6 @@
         if ($x->get_views() == $y->get_views()){
             return 0;
         }
-        return ($x->get_views() < $y->get_views()) ? -1 : 1;
+        return ($x->get_views() < $y->get_views()) ? 1 : -1;
     }
 ?>
