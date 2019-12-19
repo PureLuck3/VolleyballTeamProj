@@ -26,12 +26,12 @@ class Album{
         $id = $this->id;
         $title = $this->title;
         $userID = $this->userID;
-        $user = new user();
-        $user->load_user_by_id($userID);        
+        $user = new User();
+        $user->load_user_by_id($userID); 
         $description = $this->description;
         $date = $this->date;
 
-        include __DIR__ . "/albumTemplate.php";
+        include __DIR__ . "/../../HTML/albumTemplate.php";
     }
 
     //getter
@@ -118,6 +118,7 @@ class Album{
 
     public static function delete_album($id){
         $TDG = albumTDG::get_instance();
+        $media = new Media();
         $res = $TDG->delete_albumTDG($id);
         return $res;
     }

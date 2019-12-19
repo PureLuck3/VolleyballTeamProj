@@ -167,6 +167,27 @@ class albumTDG extends DBAO{
         return $result;
     }
 
+    public function get_all_album_by_userID($userID){
+
+        try{
+            $conn = $this->connect();
+            $query = "SELECT * FROM ". $this->tableName ." WHERE userID=:userID";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':userID', $userID);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll();
+        }
+
+        catch(PDOException $e3)
+        {
+            echo "Error: " . $e3->getMessage();
+        }
+        //fermeture de connection PDO
+        $conn = null;
+        return $result;
+    }
+
     //Supprime un album selon l'ID
     public function delete_albumTDG($id) {
         try{
