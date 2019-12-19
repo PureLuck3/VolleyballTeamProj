@@ -19,7 +19,7 @@ class Album{
         $this->userID = $userID;
         $this->description = $description;
         $this->date = $date;
-        $this->viewa = $views;
+        $this->views = $views;
     }
 
     public function display(){
