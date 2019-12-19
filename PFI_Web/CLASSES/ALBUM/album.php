@@ -118,7 +118,6 @@ class Album{
 
     public static function delete_album($id){
         $TDG = albumTDG::get_instance();
-        $media = new Media();
         $res = $TDG->delete_albumTDG($id);
         return $res;
     }
