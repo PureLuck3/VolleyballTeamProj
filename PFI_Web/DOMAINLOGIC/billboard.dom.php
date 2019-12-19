@@ -1,6 +1,5 @@
 <?php
     include "../CLASSES/ALBUM/album.php";
-    //include "../CLASSES/MEDIA/media.php";
 
     function display_billboard()
     {
@@ -20,6 +19,7 @@
         foreach($array as $elem)
         {
             $elem->display();
+            echo "<br>";
         }
 
         // Afficher le top N de sortedArrays!! NE PAS FAIRE BOUTON SHOW MORE
