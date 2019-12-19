@@ -13,7 +13,17 @@ class Media{
     private $albumID;
     private $views;
 
-    public function __construct(){}
+    public function __construct($id, $type, $URL, $title, $description, $date, $albumID, $views)
+    {
+        $this->id=$id;
+        $this->type=$type;
+        $this->URL=$URL;
+        $this->title=$title;
+        $this->description=$description;
+        $this->date=$date;
+        $this->albumID=$albumID;
+        $this->views=$views;
+    }
 
     //getters
     public function get_id(){
@@ -107,7 +117,7 @@ class Media{
     public static function arr_to_obj($arr){
         $obj_arr = array();
         foreach($arr as $k){
-            $temp_m = new Media($k["id"], $k["type"], $k["URL"], $k["title"], $k["description"], $k["albumID"]);
+            $temp_m = new Media($k["id"], $k["type"], $k["URL"], $k["title"], $k["description"], $k["date"], $k["albumID"], $k["views"]);
             array_push($obj_arr, $temp_m);
         }
         return $obj_arr;
