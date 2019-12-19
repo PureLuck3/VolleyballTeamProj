@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS albums (
     title VARCHAR(50) NOT NULL,
     userID INTEGER(10) NOT NULL,
     description VARCHAR(250),
-    date DATE NOT NULL,
+    date VARCHAR(10) NOT NULL,
     views INTEGER(10)
 );
 
