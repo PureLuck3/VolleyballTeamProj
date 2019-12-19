@@ -78,7 +78,7 @@ class User{
         $TDG = UserTDG::get_instance();
         $res = $TDG->get_by_id($id);
 
-        if($res){
+        if(!$res){
             $TDG = null;
             return false;
         }
@@ -86,7 +86,6 @@ class User{
         $this->id = $res['id'];
         $this->email = $res['email'];
         $this->username = $res['username'];
-        $this->password = $res['password'];
 
         $TDG = null;
         return true;
