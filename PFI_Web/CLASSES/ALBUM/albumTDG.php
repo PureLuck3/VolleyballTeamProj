@@ -16,6 +16,7 @@ class albumTDG extends DBAO{
         if(is_null(self::$instance)){
             self::$instance = new albumTDG();
         }
+        return self::$instance;
     }
 
 //Création de la table
