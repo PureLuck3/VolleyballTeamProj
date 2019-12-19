@@ -12,14 +12,15 @@ class Album{
     private $date;
     private $views;
 
-    // public function __construct($id, $title, $userID, $description, $date)
-    // {
-    //     // $this->id = $id;
-    //     // $this->title = $title;
-    //     // $this->userID = $userID;
-    //     // $this->description = $description;
-    //     // $this->date = $date;
-    // }
+    public function __construct($id, $title, $userID, $description, $date, $views)
+    {
+        $this->id = $id;
+        $this->title = $title;
+        $this->userID = $userID;
+        $this->description = $description;
+        $this->date = $date;
+        $this->viewa = $views;
+    }
 
     public function display(){
         $id = $this->id;
@@ -109,7 +110,7 @@ class Album{
     public static function arr_to_obj($arr){
         $obj_arr = array();
         foreach($arr as $k){
-            $temp_m = new Album($k["id"], $k["title"], $k["userID"], $k["description"], $k["date"]);
+            $temp_m = new Album($k["id"], $k["title"], $k["userID"], $k["description"], $k["date"], $k[$views]);
             array_push($obj_arr, $temp_m);
         }
         return $obj_arr;
