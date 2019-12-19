@@ -1,8 +1,12 @@
-<div class="Container">
-    <div class="card">
+<div class="Container" style="width:400px">
+    
+    <h2><?php echo $name . " Albums" ?></h2>
+    <div class="card" style="width:400px">
         <div class="card-header">
-            <h2><?php echo $title ?></h2>
-            <img>
+            <a href=""><?php  ?></a>
+        </div>
+        <div class="card-body">
+            
         </div>
     </div>
 </div>
