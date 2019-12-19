@@ -141,9 +141,10 @@ class User{
         //add user to DB
         $TDG = UserTDG::get_instance();
         $res = $TDG->add_user($email, $username, password_hash($pw, PASSWORD_DEFAULT));
+        $this->load_user($email);
         $pathname = "../MEDIAS/" . $this->id;
         mkdir($pathname);
-        copy("../MEDIAS/profilepicture.png", $pathname);
+        copy("../MEDIAS/defaultProfilePicture.jpg", $pathname . "/profilePicture.jpg");
         $TDG = null;
         return true;
     }
