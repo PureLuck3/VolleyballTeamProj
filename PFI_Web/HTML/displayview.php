@@ -7,7 +7,7 @@
 
 <div class="container" style="margin-top:30px">
 <?php
-    $media_arr = Media::get_all_media();
+    $media_arr = Media::get_medias_by_albumID($albumID);
     foreach($media_arr as $media)
     {
         $media->display();
