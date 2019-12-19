@@ -1,6 +1,6 @@
 <?php
 
-include_once __DIR__ . "/../utilities/connector.php";
+include_once __DIR__ . "/../../UTILS/connector.php";
 
 class MediaTDG extends DBAO{
 
@@ -64,7 +64,6 @@ class MediaTDG extends DBAO{
         //fermeture de connection PDO
         $conn = null;
         return $resp;
-    }
     }
 
     public function get_all_media(){
