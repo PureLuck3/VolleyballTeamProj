@@ -53,7 +53,7 @@
         </div>
         <div class="col-md-4 order-md-2 mb-4">
 
-            <form method = "post" action = "../DOMAINLOGIC/upload.dom.php" enctype="multipart/form-data">
+            <form method = "post" action = "../DOMAINLOGIC/changeProfilePicture.dom.php" enctype="multipart/form-data">
 
                 <div class="form-group">
                     <label for="Media">Profile Picture</label>
