@@ -52,7 +52,7 @@
                     <?php 
                         if(validate_session())
                         {
-                            echo "<a class='nav-link' href='albumview.php'>MY ABLUMS</a>";
+                            echo "<a class='nav-link' href='albumview.php'>MY ALBUMS</a>";
                         }
                         else
                         {
