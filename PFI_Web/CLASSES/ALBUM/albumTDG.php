@@ -62,9 +62,10 @@ class albumTDG extends DBAO{
         
         try{
             date_default_timezone_set('EST');
+            $date = date("F j, Y, g:i a");
             $conn = $this->connect();
             $tableName = $this->tableName;
-            $query = "INSERT INTO $tableName (title, userID, description, date) VALUES (:title, :userID, :description," . date("D, d M Y H:i:s"). ")";
+            $query = "INSERT INTO $tableName (title, userID, description, date, views) VALUES(:title, :userID, :description,  '$date', 0)";
             $stmt = $conn->prepare($query);
             $stmt->bindParam(':title', $title);
             $stmt->bindParam(':userID', $userID);
@@ -72,7 +73,6 @@ class albumTDG extends DBAO{
             $stmt->execute();
             $resp = true;
         }
-
         catch(PDOException $e1)
         {
             $resp =  false;
