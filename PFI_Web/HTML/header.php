@@ -11,10 +11,10 @@
     </head>
     
     <body>
-        <div class="jumbotron text-center" style="margin-bottom:0">
+        <div class="jumbotron text-center" style="margin-bottom:0; background-color :aqua">
             <div class="container">
-                <h1>Projet 1 - Forum</h1>      
-                <p>Paul Blart vend des trucs sur internets</p>
+                <h1>PFI Web</h1>      
+                <p>Les chiens sont lit !!!</p>
             </div>
         </div>
 
