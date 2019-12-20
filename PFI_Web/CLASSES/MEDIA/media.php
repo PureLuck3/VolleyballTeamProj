@@ -131,13 +131,13 @@ class Media{
     }
     
     public static function search_Media($title){
-            $TDG = new mediaTDG();
-            $res = $TDG->search_media_title($title);
-            $media_list = array();
+        $TDG = mediaTDG::get_instance();
+        $res = $TDG->search_media_title($title);
+        $media_list = array();
 
-            $media_list = self::arr_to_obj($res);
+        $media_list = self::arr_to_obj($res);
 
-            return $media_list;
-        }
+        return $media_list;
+    }
 
 }
