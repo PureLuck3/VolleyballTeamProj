@@ -133,6 +133,16 @@ class Album{
         $res = $TDG->update_album_descriptionTDG($id, $description);
         return $res;
     }
+    
+    public static function search_album($title){
+        $TDG = new albumTDG();
+        $res = $TDG->search_album_title($title);
+        $album_list = array();
+        
+        $album_list = self::arr_to_obj($res);
+          
+        return $album_list;
+    }
 }
 
 ?>
