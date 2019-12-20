@@ -8,7 +8,7 @@ if(isset($_FILES['Media']) && !empty($_POST['Name'])){
     $description = $_POST['description'];
     $albumID = $_POST['albumID'];
     $albumTitle = $_POST['albumTitle'];
-    $target_dir = "Medias/";
+    $target_dir = "MEDIAS/" . $_SESSION["userID"] . "/";
 
     //obtenir l'extention du fichier uploader
     $media_file_type = pathinfo($_FILES['Media']['name'] ,PATHINFO_EXTENSION);
@@ -32,15 +32,15 @@ if(isset($_FILES['Media']) && !empty($_POST['Name'])){
     }
 
     //creation d'un nom unique pour la "PATH" du fichier
-    $path = tempnam("../Medias", '');
+    $path = tempnam("../MEDIAS/" . $_SESSION["userID"], '');
     unlink($path);
     $file_name = basename($path, ".tmp");
     
     //creation de l'url pour la DB
-    $url = $target_dir . $file_name . "." . $media_file_type;
+    $url = "../" .$target_dir . $file_name . "." . $media_file_type;
     
     //deplacement du fichier uploader vers le bon repertoire (Medias)
-    move_uploaded_file($_FILES['Media']['tmp_name'], "../" . $url);
+    move_uploaded_file($_FILES['Media']['tmp_name'], $url);
 
     //create entry in database
     Media::create_entry($type, $url, $title, $description, $albumID);
@@ -48,5 +48,4 @@ if(isset($_FILES['Media']) && !empty($_POST['Name'])){
     header("Location: ../HTML/picinalbumview.php?id=$albumID&title=$albumTitle");
     die();
 }
-
 ?>
