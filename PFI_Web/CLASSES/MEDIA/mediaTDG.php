@@ -27,7 +27,7 @@ class MediaTDG extends DBAO{
             $date = date("F j, Y, g:i a");
             $conn = $this->connect();
             $tableName = $this->tableName;
-            $query = "INSERT INTO $tableName (type, URL, title,description,date,albumID) VALUES(:type, :URL, :title, :description, '$date' , :albumID)";
+            $query = "INSERT INTO $tableName (type, URL, title, description, date, albumID, views) VALUES(:type, :URL, :title, :description, '$date' , :albumID, 0)";
             $stmt = $conn->prepare($query);
             $stmt->bindParam(':type', $type);
             $stmt->bindParam(':URL', $url);
