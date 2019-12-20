@@ -45,7 +45,7 @@ if(isset($_FILES['Media']) && !empty($_POST['Name'])){
     Media::create_entry($type, $url, $title, $description, $albumID);
 
     //redirection
-    header("Location: ../HTML/billboardview.php");
+    header("Location: ../HTML/picinalbumview?id=$albumID&title=$title.php");
     die();
 }
 
