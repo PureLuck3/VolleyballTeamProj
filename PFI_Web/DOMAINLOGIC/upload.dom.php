@@ -9,6 +9,7 @@ if(isset($_FILES['Media']) && !empty($_POST['Name'])){
     $description = $_POST['description'];
     $albumID = $_POST['albumID'];
     $albumTitle = $_POST['albumTitle'];
+    $userID = $_SESSION['userID'];
     $target_dir = "MEDIAS/" . $_SESSION["userID"] . "/";
 
     //obtenir l'extention du fichier uploader
@@ -46,7 +47,7 @@ if(isset($_FILES['Media']) && !empty($_POST['Name'])){
     //create entry in database
     Media::create_entry($type, $url, $title, $description, $albumID);
     //redirection
-    header("Location: ../HTML/picinalbumview.php?id=$albumID&title=$albumTitle");
+    header("Location: ../HTML/picinalbumview.php?id=$albumID&title=$albumTitle&userID=$userID");
     die();
 }
 ?>
