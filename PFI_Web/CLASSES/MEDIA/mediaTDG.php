@@ -23,10 +23,11 @@ class MediaTDG extends DBAO{
     public function add_media($type, $url, $title,$description,$albumID){
         
         try{
-            date_default_timezone_set('EST');   
+            date_default_timezone_set('EST');
+            $date = date("F j, Y, g:i a");
             $conn = $this->connect();
             $tableName = $this->tableName;
-            $query = "INSERT INTO $tableName (type, URL, title,description,date,albumID) VALUES (:type, :URL, :title, :description, " . date("F j, Y, g:i a") . ", :albumID)";
+            $query = "INSERT INTO $tableName (type, URL, title,description,date,albumID) VALUES(:type, :URL, :title, :description, '$date' , :albumID)";
             $stmt = $conn->prepare($query);
             $stmt->bindParam(':type', $type);
             $stmt->bindParam(':URL', $url);
