@@ -87,7 +87,7 @@ class Album{
 
     public static function create_album($title, $description, $date){
         $TDG = albumTDG::get_instance();
-        $res = $TDG->add_media($title, $description, $date);
+        $res = $TDG->add_album($title, $description, $date);
         return $res;
     }
 
