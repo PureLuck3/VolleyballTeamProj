@@ -5,7 +5,7 @@
     $title = "Search Result";
     require "header.php";
     $album_list = Album::search_album($_POST["searchResult"]);
-    $user_list = user::search_album_by_user($_POST["searchResult"]);
+    $user_list = user::search_album_username($_POST["searchResult"]);
     $media_list = media::search_Media($_POST["searchResult"]);
 ?>
 
