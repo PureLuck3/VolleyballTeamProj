@@ -31,6 +31,7 @@
                 foreach($array as $elem)
                 {
                     $elem->display();
+                    echo "<br>";
                 }
             ?>               
             </div>
