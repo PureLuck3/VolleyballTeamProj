@@ -129,6 +129,15 @@ class Media{
         $res = $TDG->update_views($this->get_id(), $this->get_views());
         return $res;
     }
+    
+    public static function search_Media($title){
+            $TDG = new mediaTDG();
+            $res = $TDG->search_media_title($title);
+            $media_list = array();
 
+            $media_list = self::arr_to_obj($res);
+
+            return $media_list;
+        }
 
 }
