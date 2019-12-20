@@ -87,13 +87,13 @@ class Media{
         include __DIR__ . "/../../HTML/mediaTemplate.php";
     }
 
-    public function create_entry($type, $url, $title, $description, $albumID){
+    public static function create_entry($type, $url, $title, $description, $albumID){
         $TDG = MediaTDG::get_instance();
         $res = $TDG->add_media($type, $url, $title,$description, $albumID);
         return $res;
     }
 
-    public function remove_media($id){
+    public static function remove_media($id){
         $TDG = MediaTDG::get_instance();
         $res = $TDG-> delete_media($id);
         return $res;
