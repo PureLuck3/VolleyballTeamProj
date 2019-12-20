@@ -219,4 +219,13 @@ class User{
         $TDG = null;
         return $res["username"];
     }
+    
+    public function displayUser(){
+        $id = $this->id;
+        $email = $this->email;
+        $user = UserTDG::get_instance();
+        $user->load_user_by_id($id);
+        $username = $this->username;
+        $password = $this->password;
+    }
 }
