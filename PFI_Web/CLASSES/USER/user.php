@@ -220,6 +220,19 @@ class User{
         return $res["username"];
     }
     
+    public static function search_album_username($title){
+        $TDG = userTDG::get_instance();
+        $res = $TDG->search_album_username($title);
+        $thread_list = array();
+        foreach($res as $r){
+            $thread = new user();
+            $thread->set_id($r["id"]);
+            $thread->set_username($r["username"]);
+            array_push($thread_list, $thread);
+        }
+        
+        return $thread_list;
+    }
     public function displayUser(){
         $id = $this->id;
         $email = $this->email;
