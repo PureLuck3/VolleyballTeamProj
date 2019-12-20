@@ -5,6 +5,8 @@ include "../CLASSES/MEDIA/media.php";
 if(isset($_FILES['Media']) && !empty($_POST['Name'])){
  
     $title = $_POST['Name'];
+    $description = $_POST['description'];
+    $albumID = $_POST['albumID'];
     $target_dir = "Medias/";
 
     //obtenir l'extention du fichier uploader
@@ -40,10 +42,10 @@ if(isset($_FILES['Media']) && !empty($_POST['Name'])){
     move_uploaded_file($_FILES['Media']['tmp_name'], "../" . $url);
 
     //create entry in database
-    Media::create_entry($type, $url, $title);
+    Media::create_entry($type, $url, $title, $description, $albumID);
 
     //redirection
-    header("Location: ../Display.php");
+    header("Location: ../HTML/billboardview.php");
     die();
 }
 
