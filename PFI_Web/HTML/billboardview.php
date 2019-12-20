@@ -20,8 +20,5 @@
           display_billboard();
         ?>
       </div>
-      <div class="col-md-4 mb-4">
-          <?php include "uploadview.php"; ?>
-      </div>
     </div>
 </div>
