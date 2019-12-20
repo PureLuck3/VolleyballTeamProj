@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS medias (
     URL VARCHAR(50) NOT NULL,
     title VARCHAR(25) NOT NULL,
     description VARCHAR(250),
-    date DATE NOT NULL,
+    date VARCHAR(100) NOT NULL,
     albumID INTEGER(10) NOT NULL,
     views INTEGER(10)
 );
