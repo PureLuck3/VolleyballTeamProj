@@ -170,4 +170,25 @@ class MediaTDG extends DBAO{
         $conn = null;
         return $resp;
     }
+    
+    public function search_media_title($title){
+        try{
+            $conn = $this->connect();
+            $tableName = $this->tableName;
+            $query = "SELECT * FROM $tableName WHERE title LIKE :title";
+            $stmt = $conn->prepare($query);
+            $title = '%' . $title . '%';
+            $stmt->bindParam(':title', $title);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll();
+        }
+        catch(PDOException $e)
+        {
+            return false;
+        }
+        //fermeture de connection PDO
+        $conn = null;
+        return $result;
+    }
 }
