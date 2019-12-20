@@ -1,6 +1,7 @@
 <?php
 
 include "../CLASSES/MEDIA/media.php";
+session_start();
 
 if(isset($_FILES['Media']) && !empty($_POST['Name'])){
  
