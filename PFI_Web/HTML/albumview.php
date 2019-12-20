@@ -20,7 +20,7 @@
         <div class="col-sm-8">  
             <div class="Container" style="width:400px">               
             <?php
-                 echo "<h2>$name" . "s'" . " Albums" . "</h2>";
+                 echo "<h2>$name" . "'s" . " Albums" . "</h2>";
                  $array = array();
                  $albums = Album::get_all_album_by_userID($_SESSION["userID"]);
  
