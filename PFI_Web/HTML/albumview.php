@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="col-sm-4">
-            <?php //include "uploadalbumview.php";?>
+            <?php include "uploadalbumview.php";?>
         </div>
     </div>
 </div>
