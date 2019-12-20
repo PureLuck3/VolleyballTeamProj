@@ -42,7 +42,7 @@ class User{
     public function set_id($id){
         $this->id = $id;
     }
-    
+
     public function set_email($email){
         $this->email = $email;
     }
@@ -237,10 +237,11 @@ class User{
         
         return $thread_list;
     }
+
     public function displayUser(){
         $id = $this->id;
         $email = $this->email;
-        $user = UserTDG::get_instance();
+        $user = new User();
         $user->load_user_by_id($id);
         $username = $this->username;
         $password = $this->password;
