@@ -170,7 +170,7 @@ class MediaTDG extends DBAO{
         $conn = null;
         return $resp;
     }
-    
+
     public function search_media_title($title){
         try{
             $conn = $this->connect();
