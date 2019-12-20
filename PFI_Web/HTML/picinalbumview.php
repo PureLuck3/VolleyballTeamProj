@@ -15,9 +15,9 @@
       </div>
       <?php
         if ($userID == $_SESSION['userID']){
-          echo "<div class='col-md-4 mb-4'>
-                <?php include 'Uploadview.php'; ?>
-                </div>"
+          echo "<div class='col-md-4 mb-4'>";
+          include 'Uploadview.php';
+          echo "</div>";
         }
       ?>
     </div>
