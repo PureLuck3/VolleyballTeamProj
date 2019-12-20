@@ -135,7 +135,7 @@ class Album{
     }
     
     public static function search_album($title){
-        $TDG = new albumTDG();
+        $TDG = albumTDG::get_instance();
         $res = $TDG->search_album_title($title);
         $album_list = array();
         
