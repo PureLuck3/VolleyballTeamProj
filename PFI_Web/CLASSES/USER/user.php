@@ -39,6 +39,10 @@ class User{
 
 
     //setters
+    public function set_id($id){
+        $this->id = $id;
+    }
+    
     public function set_email($email){
         $this->email = $email;
     }
