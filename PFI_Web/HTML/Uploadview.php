@@ -20,7 +20,7 @@
         <div class="invalid-feedback">Please fill out this field.</div>
     </div>
     <input type="hidden" name="albumID" id="albumID" value=<?php echo $_GET["id"] ?>>
-
+    <input type="hidden" name="albumTitle" id="albumTitle" value=<?php echo $_GET['title'] ?>>
     <button class="btn btn-success" type="submit">Upload</button>
 
 </form>
