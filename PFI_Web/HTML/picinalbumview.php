@@ -3,7 +3,7 @@
     include "../UTILS/sessionhandler.php";
     include "../DOMAINLOGIC/picinalbum.dom.php";
     require "header.php";
-    $userid = $_GET['userID'];
+    $userID = $_GET['userID'];
 ?>
 <div class="container">
     <h2><?php echo $_GET['title']?>  </h2>
