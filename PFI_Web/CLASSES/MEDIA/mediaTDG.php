@@ -49,11 +49,10 @@ class MediaTDG extends DBAO{
 
     public function delete_media($id){
         try{
-
             $conn = $this->connect();
-            $query = "DELETE FROM" . $this->tableName . "WHERE id=:id";
+            $query = "DELETE FROM " . $this->tableName . " WHERE id=:id";
             $stmt = $conn->prepare($query);
-            $stmt->bindParam(':id', $mediaID);
+            $stmt->bindParam(':id', $id);
             $stmt->execute();
             $resp = true;
         }

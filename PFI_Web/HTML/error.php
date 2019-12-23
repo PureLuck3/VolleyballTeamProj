@@ -1,4 +1,5 @@
 <?php
+    $title = "Error Message";
     include "../UTILS/sessionhandler.php";
     require "header.php";
 

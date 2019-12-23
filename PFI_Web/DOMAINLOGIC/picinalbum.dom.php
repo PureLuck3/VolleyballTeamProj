@@ -13,6 +13,17 @@
         foreach($array as $elem)
         {
             $elem->display();
+            if (validate_session())
+            {
+                if ($_GET['userID'] == $_SESSION['userID'])
+                {
+                    echo "<form method='post' action='../DOMAINLOGIC/deletemedia.dom.php'>";
+                    echo "<button class='btn btn-success' id='btnDelMedia'>Delete</button>";
+                    echo "<input type='hidden' id='mediaID' name='mediaID' value=" . $elem->get_id() . ">";
+                    echo "<input type='hidden' id='url' name='url' value=" . $elem->get_URL() . ">";
+                    echo "</form>";
+                }
+            }
             echo "<br>";
         }
     }

@@ -10,13 +10,13 @@
     die();
   }
 
-  if(!isset($_POST["oldpw"]) || !isset($_POST["newpw"])){
-    header("Location: ../HTML/error.php?ErrorMSG=invalid%20password");
+  if(!isset($_POST["oldPw"]) || !isset($_POST["pwd"])){
+    header("Location: ../HTML/error.php?ErrorMSG=password%20not%20entered");
     die();
   }
 
-  $oldpw = $_POST["oldpw"];
-  $newpw = $_POST["newpw"];
+  $oldpw = $_POST["oldPw"];
+  $newpw = $_POST["pwd"];
   $pwval = $_POST["pwValidation"];
 
 

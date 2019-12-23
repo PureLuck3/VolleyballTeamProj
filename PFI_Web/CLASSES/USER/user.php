@@ -245,5 +245,7 @@ class User{
         $user->load_user_by_id($id);
         $username = $this->username;
         $password = $this->password;
+        echo "<h5>$username</h5>";
+        echo "<br>";
     }
 }

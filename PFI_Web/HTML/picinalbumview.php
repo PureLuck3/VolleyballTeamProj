@@ -3,7 +3,6 @@
     include "../UTILS/sessionhandler.php";
     include "../DOMAINLOGIC/picinalbum.dom.php";
     require "header.php";
-    $userID = $_GET['userID'];
 ?>
 <div class="container">
     <h2><?php echo $_GET['title']?>  </h2>
@@ -14,11 +13,15 @@
         ?>
       </div>
       <?php
+      if (validate_session())
+      {
+        $userID = $_GET['userID'];
         if ($userID == $_SESSION['userID']){
           echo "<div class='col-md-4 mb-4'>";
           include 'Uploadview.php';
           echo "</div>";
         }
+      }
       ?>
     </div>
 </div>

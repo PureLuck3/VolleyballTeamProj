@@ -13,20 +13,20 @@
 <div class="container" style="margin-top:30px">
     <div class="row">
         <div class="col-sm-8">
-            <?php  
+            <?php
+                echo "<h2>Albums</h2>";
                 foreach($album_list as $album)
                 {
                     $album->display();
                 }
 
-                echo "<br>";
-
+                echo "<br><h2>Users</h2>";
                 foreach($user_list as $user)
                 {
                     $user->displayUser();
                 }
 
-                echo "<br>";
+                echo "<br><h2>Medias</h2>";
 
                 foreach($media_list as $media)
                 {
